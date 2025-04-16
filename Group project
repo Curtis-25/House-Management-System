@@ -27,3 +27,24 @@ void addTenant(struct Tenant tenants[], int *tenantCount) {
 
     printf("Enter Deposit Amount: ");
     scanf("%f", &newTenant.deposit);
+
+    if (newTenant.monthsStayed >= 3) {
+        newTenant.isDepositRefunded = 1;
+    } else {
+        newTenant.isDepositRefunded = 0;
+    }
+
+    printf("Was there any room damage? (1 = Yes, 0 = No): ");
+    scanf("%d", &newTenant.damageReported);
+
+    if (newTenant.damageReported) {
+        printf("Enter damage cost: ");
+        scanf("%f", &newTenant.damageCost);
+    } else {
+        newTenant.damageCost = 0.0;
+    }
+
+    tenants[*tenantCount] = newTenant;
+    (*tenantCount)++;
+    printf("Tenant added successfully!\n");
+}
