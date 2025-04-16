@@ -50,3 +50,63 @@ void addTenant(struct Tenant tenants[], int *tenantCount) {
     (*tenantCount)++;
     printf("Tenant added successfully!\n");
 }
+void displayTenants(struct Tenant tenants[], int tenantCount) {
+    printf("\nTenant List:\n");
+    for (int i = 0; i < tenantCount; i++) {
+        printf("\nTenant %d\n", i + 1);
+        printf("Name: %s\n", tenants[i].name);
+        printf("Apartment Number: %d\n", tenants[i].apartmentNumber);
+        printf("Months Stayed: %d\n", tenants[i].monthsStayed);
+        printf("Deposit Amount: %.2f\n", tenants[i].deposit);
+        printf("Damage Reported: %s\n", tenants[i].damageReported ? "Yes" : "No");
+        printf("Damage Cost: %.2f\n", tenants[i].damageCost);
+        if (tenants[i].isDepositRefunded) {
+            printf("Deposit Refund Status: Refunded\n");
+        } else {
+            printf("Deposit Refund Status: Not Refunded\n");
+        }
+    }
+}
+
+void displayNonRefundableDeposits(struct Tenant tenants[], int tenantCount) {
+    printf("\nTenants with Non-Refundable Deposits:\n");
+    for (int i = 0; i < tenantCount; i++) {
+        if (!tenants[i].isDepositRefunded) {
+            printf("Name: %s, Apartment: %d, Months Stayed: %d, Deposit: %.2f\n",
+                   tenants[i].name, tenants[i].apartmentNumber, tenants[i].monthsStayed, tenants[i].deposit);
+        }
+    }
+}
+
+int main() {
+    struct Tenant tenants[MAX_TENANTS];
+    int tenantCount = 0;
+    int choice;
+
+    while (1) {
+        printf("\nTenant Management System\n");
+        printf("1. Add Tenant\n");
+        printf("2. Display All Tenants\n");
+        printf("3. Display Tenants with Non-Refundable Deposits\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addTenant(tenants, &tenantCount);
+                break;
+            case 2:
+                displayTenants(tenants, tenantCount);
+                break;
+            case 3:
+                displayNonRefundableDeposits(tenants, tenantCount);
+                break;
+            case 4:
+                printf("Exiting program.\n");
+                return 0;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
