@@ -27,3 +27,5 @@ void addTenant(struct Tenant tenants[], int *tenantCount) {
 
     printf("Enter Deposit Amount: ");
     scanf("%f", &newTenant.deposit);
+    printf("Enter Deposit Amount: ");
+    scanf("%f", &newTenant.deposit);
