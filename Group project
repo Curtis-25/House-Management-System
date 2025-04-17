@@ -27,8 +27,6 @@ void addTenant(struct Tenant tenants[], int *tenantCount) {
 
     printf("Enter Deposit Amount: ");
     scanf("%f", &newTenant.deposit);
-    printf("Enter Deposit Amount: ");
-    scanf("%f", &newTenant.deposit);
 // Check if deposit will be refunded
     if (newTenant.monthsStayed >= 3) {
         newTenant.isDepositRefunded = 1;
