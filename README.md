@@ -1,2 +1,2 @@
 # House-Management-System
-The file keeps track of tenants in apartments
+The file keeps track of tenants
