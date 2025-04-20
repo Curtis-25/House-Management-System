@@ -97,7 +97,7 @@ void searchTenant(struct Tenant tenants[], int tenantCount) {
     searchName[strcspn(searchName, "\n")] = '\0';
 
     for (int i = 0; i < tenantCount; i++) {
-        if (strcasestr(tenants[i].name, searchName)) {
+        if (strcasecmp(tenants[i].name, searchName)) {
             printf("\nTenant Found:\n");
             printf("Name: %s\n", tenants[i].name);
             printf("Apartment: %d\n", tenants[i].apartmentNumber);
